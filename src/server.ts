@@ -1,22 +1,23 @@
+import dotenv from 'dotenv';
+dotenv.config();  // Cargar las variables de entorno desde el archivo .env
+
 import express, { Request, Response } from "express";
 import bodyParser from 'body-parser';
 import productRoutes from './routes/ProductRoutes';
+import orderRoutes from './routes/OrderRoutes';
+import userRoutes from './routes/UserRoutes';
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json()); // Middleware para parsear JSON.
-
+app.use(express.json());
 app.use(bodyParser.json());
 
-// Routes
+// Rutas
 app.use('/api/products', productRoutes);
+app.use('/api/order', orderRoutes);
+app.use('/api/user', userRoutes);
 
-// Ruta principal
-// app.get("/", (req: Request, res: Response) => {
-//   res.send("Hello, Express with TypeScript!");
-// });
-
-// Inicia el servidor
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
