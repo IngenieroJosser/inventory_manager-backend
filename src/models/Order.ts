@@ -3,7 +3,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 export interface IOrder extends Document {
     productId: mongoose.Schema.Types.ObjectId;
     quantity: number;
-    supplier: string;
+    supplier: string; // Proveedor
     orderDate: Date;
     status: 'Pending' | 'Completed';
 }
