@@ -1,23 +1,38 @@
-import dotenv from 'dotenv';
-dotenv.config();  // Cargar las variables de entorno desde el archivo .env
-
-import express, { Request, Response } from "express";
-import bodyParser from 'body-parser';
-import productRoutes from './routes/ProductRoutes';
-import orderRoutes from './routes/OrderRoutes';
+import express from 'express';
+import cors from 'cors'; // Importar cors
+import connectDatabase from './shared/database';
+import config from './shared/config';
 import userRoutes from './routes/UserRoutes';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = config.port;
 
+// Middleware para manejar JSON
 app.use(express.json());
-app.use(bodyParser.json());
 
-// Rutas
-app.use('/api/products', productRoutes);
-app.use('/api/order', orderRoutes);
-app.use('/api/user', userRoutes);
+// Configuración de CORS
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // Dominio del frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
+    credentials: true, // Si necesitas enviar cookies o encabezados como Authorization
+  })
+);
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// Rutas de usuarios
+app.use('/api/users', userRoutes);
+
+// Conectar la base de datos y arrancar el servidor
+const startServer = async () => {
+  try {
+    await connectDatabase();
+    app.listen(PORT, () => {
+      console.log(`🌐 Server running on http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error('❌ Failed to start server:', error);
+    process.exit(1);
+  }
+};
+
+startServer();

@@ -3,12 +3,13 @@ import * as UserController from '../controllers/UserController';
 
 const router = Router();
 
-// router.post('/', UserController.createUser);
+// Rutas
 router.get('/', UserController.getUsers);
+router.post('/login', UserController.getUsers);
+router.post('/register', UserController.createUser);
+
 router.get('/:id', UserController.getUserById);
 router.put('/:id', UserController.updateUser);
 router.delete('/:id', UserController.deleteUser);
-router.post('/login', UserController.loginUser);
-router.post('/register', UserController.registerUser);
 
 export default router;
