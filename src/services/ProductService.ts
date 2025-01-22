@@ -28,7 +28,7 @@ export const deleteProduct = async (codeProduct: string): Promise<void> => {
     const deletedProduct = await Product.findOneAndDelete({ code: codeProduct });
 
     if (!deletedProduct) {
-        throw new Error(`Product with code ${codeProduct} not found`);
+        throw new Error(`Producto con código ${codeProduct} no encontrado`);
     }
 };
 

@@ -30,31 +30,19 @@ export const getUserByUsername = async (username: string): Promise<IUser | null>
     return await User.findOne({ username }).exec();
 };
 
+export const encryptPassword = async (password: string): Promise<string> => {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(password, salt);
+};
+
 export const updateUser = async (id: string, updateData: Partial<IUser>): Promise<IUser | null> => {
+    if (updateData.password) {
+        updateData.password = await encryptPassword(updateData.password);
+    }
+
     return await User.findByIdAndUpdate(id, updateData, { new: true }).exec();
 };
 
 export const deleteUser = async (id: string): Promise<IUser | null> => {
     return await User.findByIdAndDelete(id).exec();
 };
-
-// export const registerUser = async (username: string, password: string, role: 'admin' | 'operator'): Promise<IUser> => {
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const user = new User({ username, password: hashedPassword, role });
-//     return await user.save();
-// };
-  
-// export const authenticateUser = async (username: string, password: string): Promise<string> => {
-//     const user = await User.findOne({ username });
-//     if (!user) {
-//         throw new Error('Usuario no encontrado');
-//     }
-  
-//     const isPasswordValid = await bcrypt.compare(password, user.password);
-//     if (!isPasswordValid) {
-//         throw new Error('Credenciales incorrectas');
-//     }
-  
-//     const token = jwt.sign({ id: user._id, role: user.role }, SECRET_KEY, { expiresIn: '1h' });
-//     return token;
-// };
