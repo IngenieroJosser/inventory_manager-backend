@@ -96,15 +96,15 @@ npm run start
 
 Aquí hay algunos ejemplos de los endpoints que puedes usar en la API:
 
-### 1. **GET** `/api/usuarios`
+### 1. **GET** `/api/users`
 
 Obtiene todos los usuarios de la base de datos.
 
 ```http
-GET /api/usuarios
+GET /api/users
 ```
 
-### 2. **POST** `/api/usuarios`
+### 2. **POST** `/api/users`
 
 Crea un nuevo usuario en la base de datos.
 
@@ -122,20 +122,20 @@ POST /api/usuarios
 }
 ```
 
-### 3. **GET** `/api/usuarios/:id`
+### 3. **GET** `/api/users/:id`
 
 Obtiene un usuario por su ID.
 
 ```http
-GET /api/usuarios/:id
+GET /api/users/:id
 ```
 
-### 4. **PUT** `/api/usuarios/:id`
+### 4. **PUT** `/api/users/:id`
 
 Actualiza un usuario existente.
 
 ```http
-PUT /api/usuarios/:id
+PUT /api/users/:id
 ```
 
 **Body:**
@@ -148,12 +148,12 @@ PUT /api/usuarios/:id
 }
 ```
 
-### 5. **DELETE** `/api/usuarios/:id`
+### 5. **DELETE** `/api/users/:id`
 
 Elimina un usuario por su ID.
 
 ```http
-DELETE /api/usuarios/:id
+DELETE /api/users/:id
 ```
 
 ## Estructura del Proyecto
@@ -166,10 +166,8 @@ El proyecto tiene la siguiente estructura de carpetas:
   /models           # Modelos de Mongoose
   /routes           # Definición de rutas de la API
   /middleware       # Middleware (validaciones, autenticación, etc.)
-  app.ts            # Punto de entrada de la API
   config.ts         # Configuración de la base de datos y otras configuraciones
   server.ts         # Configuración y arranque del servidor
-  /utils            # Funciones de utilidad
 ```
 
 ## Contribución
