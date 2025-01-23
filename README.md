@@ -15,7 +15,7 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 1. **Clona el repositorio:**
 
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   git clone https://github.com/IngenieroJosser/inventory_manager-backend.git
    cd tu-repositorio
    ```
 
