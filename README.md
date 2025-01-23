@@ -109,7 +109,7 @@ GET /api/users
 Crea un nuevo usuario en la base de datos.
 
 ```http
-POST /api/usuarios
+POST /api/users
 ```
 
 **Body:**
