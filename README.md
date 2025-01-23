@@ -188,4 +188,4 @@ Este proyecto está bajo la **Licencia MIT**. Consulta el archivo [LICENSE](LICE
 
 Si tienes alguna pregunta, no dudes en contactarme.
 
-Correo electrónico: developer@gmail.com
+Correo electrónico: developerjosser@gmail.com
