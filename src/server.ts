@@ -31,11 +31,11 @@ const startServer = async () => {
   try {
     await connectDatabase();
     app.listen(PORT, () => {
-      console.log(`🌐 Server running on http://localhost:${PORT}`);
+      console.log(`🌐 Servidor corriendo en http://localhost:${PORT}`);
       console.log(`📻 Documentación disponible en http://localhost:${PORT}/api-docs-inventory_manager`);
     });
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error('❌ Fallo al comenzar el servidor:', error);
     process.exit(1);
   }
 };
