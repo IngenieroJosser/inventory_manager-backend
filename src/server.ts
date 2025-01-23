@@ -2,9 +2,11 @@ import express from 'express';
 import cors from 'cors'; // Importar cors
 import connectDatabase from './shared/database';
 import config from './shared/config';
-import userRoutes from './routes/UserRoutes';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocs from './swaggerConfig';
+import userRoutes from './routes/UserRoutes';
+import orderRoutes from './routes/OrderRoutes';
+import productRoutes from './routes/ProductRoutes';
 
 const app = express();
 const PORT = config.port;
@@ -23,6 +25,8 @@ app.use(
 
 // Rutas de usuarios
 app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/product', productRoutes);
 
 app.use('/api-docs-inventory_manager', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 

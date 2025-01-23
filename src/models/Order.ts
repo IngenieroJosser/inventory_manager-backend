@@ -9,7 +9,7 @@ export interface IOrder extends Document {
 }
 
 const OrderSchema = new Schema<IOrder>({
-    productId: { type: Schema.Types.ObjectId, ref: 'Product', required: true },
+    productId: { type: Schema.Types.ObjectId, ref: 'Product', required: false },
     quantity: { type: Number, required: true },
     supplier: { type: String, required: true },
     orderDate: { type: Date, default: Date.now },

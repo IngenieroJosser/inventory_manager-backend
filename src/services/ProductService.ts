@@ -10,6 +10,10 @@ export const createProduct = async (productData: IProduct): Promise<IProduct> =>
     return Product.create(productData);
 };
 
+export const getAllProduct = async (): Promise<IProduct[]> => {
+    return await Product.find().exec();
+}
+
 export const updateProduct = async (productData: Partial<IProduct>, codeProduct: string): Promise<IProduct | null> => {
     const updatedProduct = await Product.findOneAndUpdate(
         { code: codeProduct }, // Filtro para encontrar el producto por su código

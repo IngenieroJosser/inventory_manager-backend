@@ -1,5 +1,13 @@
 import { Request, Response } from 'express';
-import { createProduct, getLowStockProducts, updateProduct, deleteProduct, disableProduct, enableProduct } from '../services/ProductService';
+import {
+    createProduct,
+    getLowStockProducts,
+    updateProduct,
+    deleteProduct,
+    disableProduct,
+    enableProduct,
+    getAllProduct
+} from '../services/ProductService';
 
 export const getLowStock = async (_req: Request, res: Response): Promise<void> => {
     const products = await getLowStockProducts();
@@ -9,6 +17,16 @@ export const getLowStock = async (_req: Request, res: Response): Promise<void> =
 export const addProduct = async (req: Request, res: Response): Promise<void> => {
     const product = await createProduct(req.body);
     res.status(201).json(product);
+};
+
+export const getAllProduct_ = async (_req:Request, res: Response): Promise<void> => {
+    try {
+        const product = await getAllProduct();
+        res.json(product);
+    } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        res.status(500).json({ error: errorMessage });
+    }
 };
 
 export const updateProduct_ = async (req: Request, res: Response): Promise<void> => {
