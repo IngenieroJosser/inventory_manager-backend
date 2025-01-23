@@ -1,7 +1,17 @@
 import { Router } from 'express';
-import * as UserController from '../controllers/UserController';
+import { 
+    getUsers, 
+    createUser, 
+    getUserById, 
+    updateUser, 
+    deleteUser,
+    // logout
+} from '../controllers/UserController'
 
 const router = Router();
+
+
+// router.post('/logout', logout);
 
 /**
  * @swagger
@@ -31,7 +41,7 @@ const router = Router();
  *               example:
  *                 error: "Error al obtener usuarios"
  */
-router.post('/login', UserController.getUsers);
+router.post('/login', getUsers);
 
 /**
  * @swagger
@@ -90,7 +100,7 @@ router.post('/login', UserController.getUsers);
  *                   type: string
  *                   example: "Password is required"
  */
-router.post('/register', UserController.createUser);
+router.post('/register', createUser);
 
 /**
  * @swagger
@@ -129,7 +139,7 @@ router.post('/register', UserController.createUser);
  *             example:
  *               error: "Unknown error"
  */
-router.get('/:id', UserController.getUserById);
+router.get('/:id', getUserById);
 
 /**
  * @swagger
@@ -182,7 +192,7 @@ router.get('/:id', UserController.getUserById);
  *             example:
  *               error: "Unknown error"
  */
-router.put('/:id', UserController.updateUser);
+router.put('/:id', updateUser);
 
 /**
  * @swagger
@@ -208,6 +218,6 @@ router.put('/:id', UserController.updateUser);
  *       500:
  *         description: Error interno del servidor.
  */
-router.delete('/:id', UserController.deleteUser);
+router.delete('/:id', deleteUser);
 
 export default router;

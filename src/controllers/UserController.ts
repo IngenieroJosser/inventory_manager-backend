@@ -63,3 +63,11 @@ export const deleteUser = async (req: Request, res: Response): Promise<void> => 
         res.status(500).json({ error: errorMessage });
     }
 };
+
+export const logout = async (_req: Request, res: Response): Promise<Response> => {
+    res.clearCookie('token', { 
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production'
+    });
+    return res.status(200).json({ message: 'Successfully logged out' });
+};

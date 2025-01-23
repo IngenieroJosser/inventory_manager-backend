@@ -1,5 +1,12 @@
 import { Router } from 'express';
-import * as OrderController from '../controllers/OrderController';
+import { 
+    createOrder, 
+    getOrders, 
+    getOrderById, 
+    updateOrder, 
+    deleteOrder 
+
+} from '../controllers/OrderController'
 
 const router = Router();
 
@@ -82,11 +89,11 @@ const router = Router();
  *                   type: string
  *                   example: "Internal server error"
  */
-router.post('/', OrderController.createOrder);
+router.post('/', createOrder);
 
-router.get('/', OrderController.getOrders);
-router.get('/:id', OrderController.getOrderById);
-router.put('/:id', OrderController.updateOrder);
-router.delete('/:id', OrderController.deleteOrder);
+router.get('/', getOrders);
+router.get('/:id', getOrderById);
+router.put('/:id', updateOrder);
+router.delete('/:id', deleteOrder);
 
 export default router;
