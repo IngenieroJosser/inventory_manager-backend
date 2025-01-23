@@ -11,10 +11,8 @@ import productRoutes from './routes/ProductRoutes';
 const app = express();
 const PORT = config.port;
 
-// Middleware para manejar JSON
 app.use(express.json());
 
-// Configuración de CORS
 app.use(
   cors({
     origin: 'http://localhost:5173', // Dominio del frontend
@@ -23,14 +21,12 @@ app.use(
   })
 );
 
-// Rutas de usuarios
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/product', productRoutes);
 
 app.use('/api-docs-inventory_manager', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-// Conectar la base de datos y arrancar el servidor
 const startServer = async () => {
   try {
     await connectDatabase();
