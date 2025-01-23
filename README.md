@@ -117,8 +117,7 @@ POST /api/users
 ```json
 {
   "nombre": "Juan Pérez",
-  "email": "juan@example.com",
-  "password": "contraseña-segura"
+  "password": "juan@example.com",
 }
 ```
 
@@ -144,7 +143,6 @@ PUT /api/users/:id
 {
   "username": "Juan Pérez",
   "password": "tu-contraseña",
-  "confirmPassword": "contraseña-segura"
 }
 ```
 
