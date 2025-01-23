@@ -142,9 +142,9 @@ PUT /api/users/:id
 
 ```json
 {
-  "nombre": "Juan Pérez",
-  "email": "juan@example.com",
-  "password": "nueva-contraseña-segura"
+  "username": "Juan Pérez",
+  "password": "tu-contraseña",
+  "confirmPassword": "contraseña-segura"
 }
 ```
 
